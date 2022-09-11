@@ -11,6 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
+    'plugin:eslint-plugin-import',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
@@ -20,5 +21,10 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
-  rules: {},
+  rules: {
+    'react/function-component-definition': ['off'],
+    'react/require-default-props': ['off'],
+    'react/jsx-props-no-spreading': ['off'],
+    'import/prefer-default-export': ['off'],
+  },
 };

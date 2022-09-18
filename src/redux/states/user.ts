@@ -1,7 +1,6 @@
 import { User } from '@/models';
 import {
   clearLocalStorage,
-  getLocalStorage,
   getOrDefaultLocalStorage,
   persistLocalStorage,
 } from '@/utilities';

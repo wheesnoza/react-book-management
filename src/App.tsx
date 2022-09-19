@@ -2,8 +2,8 @@ import { Container, LinearProgress } from '@mui/material';
 import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthGuard, GuestGuard } from './guards';
-import { PrivateRoutes, PublicRoutes } from './models';
+import { AuthGuard, GuestGuard, RoleGuard } from './guards';
+import { PrivateRoutes, PublicRoutes, Role } from './models';
 import store from './redux/store';
 
 const Login = lazy(() => import('./pages/Login/Login'));
@@ -21,6 +21,9 @@ function App() {
               </Route>
               <Route element={<AuthGuard />}>
                 <Route path={PrivateRoutes.HOME} element={<Home />} />
+                <Route element={<RoleGuard allowedRoles={[Role.ADMIN]} />}>
+                  <Route path="/private" element={<>Only admins.</>} />
+                </Route>
               </Route>
               <Route path="*" element={<>NOT FOUND</>} />
             </Routes>

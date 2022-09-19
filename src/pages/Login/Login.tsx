@@ -1,6 +1,6 @@
-import { User } from '@/models';
+import { Role } from '@/models';
 import { createUser } from '@/redux/states/user';
-import store, { AppStore } from '@/redux/store';
+import { AppStore } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Login = () => {
@@ -13,6 +13,7 @@ export const Login = () => {
         id: 1,
         email: 'test@test.example',
         name: 'Bon Jovi',
+        role: Role.EMPLOYEE,
       })
     );
   };

@@ -1,4 +1,4 @@
-import { User } from '@/models';
+import { Role, User } from '@/models';
 import {
   clearLocalStorage,
   getOrDefaultLocalStorage,
@@ -10,6 +10,7 @@ export const DefaultUserState: User = {
   id: 0,
   name: '',
   email: '',
+  role: Role.UNKNOWN,
 };
 
 const USER_KEY = 'user';

@@ -1,5 +1,6 @@
 import { resetUser } from '@/redux/states/user';
 import { AppStore } from '@/redux/store';
+import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Home = () => {
@@ -13,8 +14,10 @@ export const Home = () => {
   return (
     <>
       <h1>Home</h1>
-      <span>{JSON.stringify(user)}</span>
-      <button onClick={handleClick}>Logout</button>
+      <p>{JSON.stringify(user)}</p>
+      <Button onClick={handleClick} variant="contained">
+        Logout
+      </Button>
     </>
   );
 };

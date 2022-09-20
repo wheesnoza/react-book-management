@@ -1,4 +1,5 @@
 import { resetUser } from '@/redux/states/user';
+import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
 export const Logout = () => {
@@ -7,7 +8,11 @@ export const Logout = () => {
   const handleClick = () => {
     dispatch(resetUser());
   };
-  return <button onClick={handleClick}>Logout</button>;
+  return (
+    <Button onClick={handleClick} variant="contained">
+      Logout
+    </Button>
+  );
 };
 
 export default Logout;

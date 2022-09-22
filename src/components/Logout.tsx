@@ -9,7 +9,7 @@ export const Logout = () => {
     dispatch(resetUser());
   };
   return (
-    <Button onClick={handleClick} variant="contained">
+    <Button onClick={handleClick} color="inherit">
       Logout
     </Button>
   );

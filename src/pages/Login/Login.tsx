@@ -1,10 +1,8 @@
 import { Role } from '@/models';
 import { createUser } from '@/redux/states/user';
-import { AppStore } from '@/redux/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const Login = () => {
-  const user = useSelector((store: AppStore) => store.user);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -21,7 +19,6 @@ export const Login = () => {
   return (
     <>
       <h1>Login</h1>
-      <span>{!!user.id && JSON.stringify(user)}</span>
       <button onClick={handleClick}>Login</button>
     </>
   );

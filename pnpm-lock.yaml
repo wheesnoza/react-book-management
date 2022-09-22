@@ -5,6 +5,8 @@ specifiers:
   '@emotion/react': ^11.10.4
   '@emotion/styled': ^11.10.4
   '@mui/material': ^5.10.4
+  '@mui/types': ^7.2.0
+  '@mui/x-data-grid': ^5.17.3
   '@reduxjs/toolkit': ^1.8.5
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
@@ -34,6 +36,7 @@ dependencies:
   '@emotion/react': 11.10.4_jzesbwkbmcauznusyf3xl355uu
   '@emotion/styled': 11.10.4_fegg7422thxjtv2g43ohoqlm7a
   '@mui/material': 5.10.4_g6p6knjyjrjltwufjb7cltiueu
+  '@mui/x-data-grid': 5.17.3_6gb4xykdiuphbfksuxrsfqvoge
   '@reduxjs/toolkit': 1.8.5_kkwg4cbsojnjnupd3btipussee
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -43,6 +46,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.19.0
+  '@mui/types': 7.2.0_@types+react@18.0.19
   '@types/react': 18.0.19
   '@types/react-dom': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.36.2_2l2r3i3lm6jysqd4ac3ql4n2mm
@@ -677,7 +681,6 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.0.19
-    dev: false
 
   /@mui/utils/5.10.3_react@18.2.0:
     resolution: {integrity: sha512-4jXMDPfx6bpMVuheLaOpKTjpzw39ogAZLeaLj5+RJec3E37/hAZMYjURfblLfTWMMoGoqkY03mNsZaEwNobBow==}
@@ -691,6 +694,25 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/5.17.3_6gb4xykdiuphbfksuxrsfqvoge:
+    resolution: {integrity: sha512-EBTD7nfV3b6Zz7X8IS0BR4x3ihzHqGAemP6Ah22N/oHTIz+HWsCMtsYWRs5SjQewVjY8JXJ3fcJJEgldOcaqqg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@mui/material': 5.10.4_g6p6knjyjrjltwufjb7cltiueu
+      '@mui/utils': 5.10.3_react@18.2.0
+      clsx: 1.2.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.6
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

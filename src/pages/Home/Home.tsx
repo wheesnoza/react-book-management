@@ -1,21 +1,12 @@
-import { Logout } from '@/components';
-import { resetUser } from '@/redux/states/user';
-import { AppStore } from '@/redux/store';
-import { useDispatch, useSelector } from 'react-redux';
+import useAuth from '@/hooks/useAuth';
 
 export const Home = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((store: AppStore) => store.user);
-
-  const handleClick = () => {
-    dispatch(resetUser());
-  };
+  const { user } = useAuth();
 
   return (
     <>
       <h1>Home</h1>
       <p>{JSON.stringify(user)}</p>
-      <Logout />
     </>
   );
 };

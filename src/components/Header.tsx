@@ -1,6 +1,7 @@
 import useAuth from '@/hooks/useAuth';
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
-import Logout from './Logout';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 export const Header = () => {
   const { user } = useAuth();
@@ -12,7 +13,7 @@ export const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             BM
           </Typography>
-          {!!user.id && <Logout />}
+          {user.id ? <LogoutButton /> : <LoginButton />}
         </Toolbar>
       </AppBar>
     </Box>

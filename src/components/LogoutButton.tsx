@@ -2,12 +2,13 @@ import { resetUser } from '@/redux/states/user';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-export const Logout = () => {
+export const LogoutButton = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(resetUser());
   };
+
   return (
     <Button onClick={handleClick} color="inherit">
       Logout
@@ -15,4 +16,4 @@ export const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogoutButton;

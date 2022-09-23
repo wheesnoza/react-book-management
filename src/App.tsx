@@ -19,10 +19,10 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <Provider store={store}>
-        <Header />
         <Suspense fallback={<LinearProgress />}>
-          <Container maxWidth="lg">
-            <BrowserRouter>
+          <BrowserRouter>
+            <Header />
+            <Container maxWidth="lg">
               <Routes>
                 <Route element={<GuestGuard />}>
                   <Route path={PublicRoutes.LOGIN} element={<Login />} />
@@ -43,8 +43,8 @@ function App() {
                 </Route>
                 <Route path="*" element={<>NOT FOUND</>} />
               </Routes>
-            </BrowserRouter>
-          </Container>
+            </Container>
+          </BrowserRouter>
         </Suspense>
       </Provider>
     </ThemeProvider>

@@ -1,19 +1,41 @@
 import useAuth from '@/hooks/useAuth';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { PrivateRoutes } from '@/models';
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 
+const pages = [
+  { label: 'Home', url: PrivateRoutes.HOME },
+  { label: 'Applications', url: PrivateRoutes.APPLICATIONS },
+];
+
 export const Header = () => {
-  const { user } = useAuth();
+  const { authenticated } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            BM
-          </Typography>
-          {user.id ? <LogoutButton /> : <LoginButton />}
+          {authenticated ? (
+            <>
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {pages.map((page) => (
+                  <Button
+                    onClick={() => navigate(page.url)}
+                    key={page.label}
+                    sx={{ color: 'white', display: 'block' }}
+                  >
+                    {page.label}
+                  </Button>
+                ))}
+              </Box>
+              <LogoutButton />
+            </>
+          ) : (
+            <LoginButton />
+          )}
         </Toolbar>
       </AppBar>
     </Box>

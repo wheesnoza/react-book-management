@@ -2,7 +2,7 @@ import { Container, LinearProgress, ThemeProvider } from '@mui/material';
 import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Header } from './components';
+import { Alert, Header } from './components';
 import { AuthGuard, GuestGuard, RoleGuard } from './guards';
 import { PrivateRoutes, PublicRoutes, Role } from './models';
 import { Book } from './pages';
@@ -26,6 +26,7 @@ function App() {
         <Suspense fallback={<LinearProgress />}>
           <BrowserRouter>
             <Header />
+            <Alert />
             <Container maxWidth="lg" sx={{ py: 5 }}>
               <Routes>
                 <Route element={<GuestGuard />}>

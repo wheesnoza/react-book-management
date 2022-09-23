@@ -1,22 +1,47 @@
-import { TextField } from '@mui/material';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import ja from 'date-fns/locale/ja';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import yup from '@/locales/yup.locale';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Input } from '@/components';
+import { InputType } from '@/components/Input';
+
+type Inputs = {
+  title: string;
+};
 
 export const CreateLendPetition = () => {
   const [value, setValue] = useState(null);
+
+  const schema = yup.object({
+    title: yup.string().required().label('タイトル'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: Inputs) => {
+    console.log(data);
+  };
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ja}>
-      <DatePicker
-        label="Start"
-        value={value}
-        onChange={setValue}
-        inputFormat="yyyy年MM月dd日"
-        mask="____年__月__日"
-        renderInput={(params) => <TextField {...params} />}
+    <Stack component="form" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        register={register}
+        errors={errors}
+        type={InputType.TEXT}
+        name="title"
+        label="Title"
       />
-    </LocalizationProvider>
+      <Button variant="contained" type="submit">
+        Post
+      </Button>
+    </Stack>
   );
 };
 

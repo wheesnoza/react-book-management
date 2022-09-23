@@ -12,7 +12,7 @@ export const LoginButton = () => {
         id: 1,
         email: 'test@test.example',
         name: 'Bon Jovi',
-        role: Role.EMPLOYEE,
+        role: Role.ADMIN,
       })
     );
   };

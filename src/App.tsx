@@ -11,6 +11,9 @@ import { appTheme } from './themes';
 
 const Login = lazy(() => import('./pages/Login/Login'));
 const Home = lazy(() => import('./pages/Home/Home'));
+const CreateLendPetition = lazy(
+  () => import('./pages/Lend/Create/CreateLendPetition')
+);
 const ApplicationList = lazy(
   () => import('./pages/Application/List/ApplicationList')
 );
@@ -22,13 +25,17 @@ function App() {
         <Suspense fallback={<LinearProgress />}>
           <BrowserRouter>
             <Header />
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{ py: 5 }}>
               <Routes>
                 <Route element={<GuestGuard />}>
                   <Route path={PublicRoutes.LOGIN} element={<Login />} />
                 </Route>
                 <Route element={<AuthGuard />}>
                   <Route path={PrivateRoutes.HOME} element={<Home />} />
+                  <Route
+                    path={PrivateRoutes.BOOK_LEND_PETITION}
+                    element={<CreateLendPetition />}
+                  />
                   <Route path={PrivateRoutes.BOOK_DETAIL} element={<Book />} />
                   <Route
                     element={

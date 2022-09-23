@@ -37,11 +37,7 @@ export const Home = () => {
                 )
               }
             >
-              <CardMedia
-                component="img"
-                image={bookImg}
-                alt="Live from space album cover"
-              />
+              <CardMedia component="img" image={bookImg} alt={book.title} />
             </StyledCard>
           </Grid>
         ))}

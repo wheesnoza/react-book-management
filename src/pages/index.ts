@@ -1,7 +1,9 @@
 export { default as ApplicationDetail } from './Application/Detail/ApplicationDetail';
 export { default as ApplicationList } from './Application/List/ApplicationList';
-export { default as Book } from './Book/Book';
 export { default as CreateBook } from './Book/Create/CreateBook';
+export { default as CreateBookLogic } from './Book/Create/CreateBookLogic';
+export { default as BookDetail } from './Book/Detail/BookDetail';
+export { default as BookForm } from './Book/Form/BookForm';
 export { default as Home } from './Home/Home';
 export { default as CreateLendPetition } from './Lend/Create/CreateLendPetition';
 export { default as Login } from './Login/Login';

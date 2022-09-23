@@ -5,12 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Alert, Header } from './components';
 import { AuthGuard, GuestGuard, RoleGuard } from './guards';
 import { PrivateRoutes, PublicRoutes, Role } from './models';
-import { Book } from './pages';
 import store from './redux/store';
 import { appTheme } from './themes';
 
 const Login = lazy(() => import('@/pages/Login/Login'));
 const Home = lazy(() => import('@/pages/Home/Home'));
+const BookDetail = lazy(() => import('@/pages/Book/Detail/BookDetail'));
 const CreateLendPetition = lazy(
   () => import('@/pages/Lend/Create/CreateLendPetition')
 );
@@ -38,7 +38,7 @@ function App() {
                     path={PrivateRoutes.BOOK_LEND_PETITION}
                     element={<CreateLendPetition />}
                   />
-                  <Route path={PrivateRoutes.BOOK_DETAIL} element={<Book />} />
+                  <Route path={PrivateRoutes.BOOK_DETAIL} element={<BookDetail />} />
                   <Route
                     element={
                       <RoleGuard allowedRoles={[Role.ADMIN, Role.CORPORATE]} />

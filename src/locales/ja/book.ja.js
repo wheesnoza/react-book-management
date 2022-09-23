@@ -4,4 +4,5 @@ export const bookTranslations = {
   stock: '在庫',
   status: 'ステータス',
   created: '書籍を追加しました。',
+  creation: '書籍追加',
 };

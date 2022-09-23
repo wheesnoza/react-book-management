@@ -1,6 +1,6 @@
 import { Alert as AlertModel } from '@/models';
 import { alert } from '@/services/alert.service';
-import { Alert } from '@mui/material';
+import { Alert, Zoom } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 export const AlertWrap = () => {
@@ -12,13 +12,11 @@ export const AlertWrap = () => {
     });
   }, []);
 
-  if (alertContent) {
-    return (
+  return (
+    <Zoom in={!!alertContent}>
       <Alert severity={alertContent?.level}>{alertContent?.message}</Alert>
-    );
-  }
-
-  return <></>;
+    </Zoom>
+  );
 };
 
 export default AlertWrap;

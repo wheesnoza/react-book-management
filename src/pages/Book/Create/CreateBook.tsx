@@ -1,8 +1,9 @@
 import { Book, BookStatus } from '@/models';
 import CreateBookLogic from './CreateBookLogic';
+import { v4 as uuid } from 'uuid';
 
 const defaultBook = {
-  id: 0,
+  id: uuid(),
   title: '',
   description: '',
   stock: 1,
@@ -10,10 +11,10 @@ const defaultBook = {
 };
 
 export const CreateBook = () => {
-  const handleSubmit = (data: Book) => {
+  const handleSubmit = (book: Book) => {
     return new Promise<Book>((resolve, reject) => {
       setTimeout(() => {
-        resolve(data);
+        resolve(book);
       }, 3000);
     });
   };

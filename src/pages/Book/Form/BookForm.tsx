@@ -7,7 +7,7 @@ import { UseFormReturn } from 'react-hook-form';
 
 interface Props {
   form: UseFormReturn<Book>;
-  onSubmit: (data: Book) => any;
+  onSubmit: (book: Book) => any;
 }
 
 export const BookForm = ({ form, onSubmit }: Props) => {

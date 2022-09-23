@@ -4,7 +4,7 @@ import { alert } from '@/services/alert.service';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { generatePath, useNavigate } from 'react-router-dom';
 import BookForm from '../Form/BookForm';
 
 const schema = yup.object().shape({
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
 
 interface Props {
   defaultValues: Book;
-  onSubmit: (data: Book) => Promise<Book>;
+  onSubmit: (book: Book) => Promise<Book>;
 }
 
 export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
@@ -31,10 +31,10 @@ export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = async (data: Book) => {
-    await onSubmit(data)
+  const handleSubmit = async (book: Book) => {
+    await onSubmit(book)
       .then(() => {
-        navigate(PrivateRoutes.BOOK_DETAIL);
+        navigate(generatePath(PrivateRoutes.BOOK_DETAIL, { bookId: book.id }));
         alert.display(t('book.created'), AlertLevel.Success);
       })
       .catch(() => alert.display(t('error'), AlertLevel.Error));

@@ -9,14 +9,15 @@ import { Book } from './pages';
 import store from './redux/store';
 import { appTheme } from './themes';
 
-const Login = lazy(() => import('./pages/Login/Login'));
-const Home = lazy(() => import('./pages/Home/Home'));
+const Login = lazy(() => import('@/pages/Login/Login'));
+const Home = lazy(() => import('@/pages/Home/Home'));
 const CreateLendPetition = lazy(
-  () => import('./pages/Lend/Create/CreateLendPetition')
+  () => import('@/pages/Lend/Create/CreateLendPetition')
 );
 const ApplicationList = lazy(
-  () => import('./pages/Application/List/ApplicationList')
+  () => import('@/pages/Application/List/ApplicationList')
 );
+const BookCreate = lazy(() => import('@/pages/Book/Create/CreateBook'));
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
                       <RoleGuard allowedRoles={[Role.ADMIN, Role.CORPORATE]} />
                     }
                   >
+                    <Route
+                      path={PrivateRoutes.BOOK_CREATE}
+                      element={<BookCreate />}
+                    />
                     <Route
                       path={PrivateRoutes.APPLICATIONS}
                       element={<ApplicationList />}

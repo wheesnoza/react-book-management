@@ -1,7 +1,10 @@
 import yup from '@/locales/yup.locale';
-import { Book, BookStatus } from '@/models';
+import { AlertLevel, Book, BookStatus, PrivateRoutes } from '@/models';
+import { alert } from '@/services/alert.service';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import BookForm from '../Form/BookForm';
 
 const schema = yup.object().shape({
@@ -21,6 +24,7 @@ interface Props {
 }
 
 export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
+  const navigate = useNavigate();
   const form = useForm<Book>({
     mode: 'onSubmit',
     defaultValues,
@@ -29,10 +33,11 @@ export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
 
   const handleSubmit = async (data: Book) => {
     await onSubmit(data)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        navigate(PrivateRoutes.BOOK_DETAIL);
+        alert.display(t('book.created'), AlertLevel.Success);
       })
-      .catch((error) => console.error(error));
+      .catch(() => alert.display(t('error'), AlertLevel.Error));
   };
 
   return <BookForm form={form} onSubmit={handleSubmit} />;

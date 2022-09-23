@@ -11,7 +11,7 @@ const defaultBook = {
 
 export const CreateBook = () => {
   const handleSubmit = (data: Book) => {
-    return new Promise<Book>((resolve) => {
+    return new Promise<Book>((resolve, reject) => {
       setTimeout(() => {
         resolve(data);
       }, 3000);

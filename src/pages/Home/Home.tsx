@@ -5,7 +5,7 @@ import { generatePath, useNavigate } from 'react-router-dom';
 import { PrivateRoutes, Role } from '@/models';
 import styled from '@emotion/styled';
 import { books } from '@/data';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const StyledCard = styled(Card)`
   cursor: pointer;
@@ -14,6 +14,8 @@ const StyledCard = styled(Card)`
 export const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { t } = useTranslation();
+
   return (
     <>
       {[Role.ADMIN, Role.CORPORATE].includes(user.role) && (
@@ -37,7 +39,6 @@ export const Home = () => {
             >
               <CardMedia
                 component="img"
-                sx={{ width: 151 }}
                 image={bookImg}
                 alt="Live from space album cover"
               />

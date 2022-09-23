@@ -27,7 +27,7 @@ function App() {
           <BrowserRouter>
             <Header />
             <Alert />
-            <Container maxWidth="lg" sx={{ py: 5 }}>
+            <Container maxWidth="lg">
               <Routes>
                 <Route element={<GuestGuard />}>
                   <Route path={PublicRoutes.LOGIN} element={<Login />} />

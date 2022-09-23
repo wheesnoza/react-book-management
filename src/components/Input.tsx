@@ -21,6 +21,7 @@ interface InputProps {
   inputProps?: InputBaseProps['inputProps'];
   disabled?: boolean;
   trigger?: UseFormTrigger<any>;
+  required?: boolean;
 }
 
 export const Input = ({
@@ -32,12 +33,12 @@ export const Input = ({
   inputProps,
   disabled = false,
   trigger,
+  required = false,
 }: InputProps) => {
   return (
     <InputWrapper>
       <InputLabel>{label}</InputLabel>
       <TextField
-        required
         disabled={disabled}
         type={type}
         error={errors && !!errors[name]}
@@ -47,6 +48,7 @@ export const Input = ({
         {...(inputProps && { inputProps })}
         onChange={() => trigger && trigger()}
         fullWidth
+        {...(required && { required })}
       />
       {errors && formValidation(errors, name)}
     </InputWrapper>

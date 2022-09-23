@@ -3,4 +3,5 @@ export const bookTranslations = {
   description: '概要',
   stock: '在庫',
   status: 'ステータス',
+  created: '書籍を追加しました。',
 };

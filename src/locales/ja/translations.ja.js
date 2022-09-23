@@ -1,8 +1,9 @@
 import { bookTranslations } from './book.ja';
 
 export const translations = {
-  Home: 'ホーム',
-  Applications: '申請',
+  home: 'ホーム',
+  applications: '申請',
+  error: '問題が発生しました。時間をおいてもう一度実行してください。',
   book: bookTranslations,
 };
 

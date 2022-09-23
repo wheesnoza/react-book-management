@@ -38,7 +38,10 @@ function App() {
                     path={PrivateRoutes.BOOK_LEND_PETITION}
                     element={<CreateLendPetition />}
                   />
-                  <Route path={PrivateRoutes.BOOK_DETAIL} element={<BookDetail />} />
+                  <Route
+                    path={PrivateRoutes.BOOK_DETAIL}
+                    element={<BookDetail />}
+                  />
                   <Route
                     element={
                       <RoleGuard allowedRoles={[Role.ADMIN, Role.CORPORATE]} />

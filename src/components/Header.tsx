@@ -7,8 +7,8 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 
 const pages = [
-  { label: 'Home', url: PrivateRoutes.HOME },
-  { label: 'Applications', url: PrivateRoutes.APPLICATIONS },
+  { label: 'home', url: PrivateRoutes.HOME },
+  { label: 'applications', url: PrivateRoutes.APPLICATIONS },
 ];
 
 export const Header = () => {

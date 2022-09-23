@@ -1,9 +1,11 @@
 import { resetUser } from '@/redux/states/user';
 import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 export const LogoutButton = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     dispatch(resetUser());
@@ -11,7 +13,7 @@ export const LogoutButton = () => {
 
   return (
     <Button onClick={handleClick} color="inherit">
-      Logout
+      {t('logout')}
     </Button>
   );
 };

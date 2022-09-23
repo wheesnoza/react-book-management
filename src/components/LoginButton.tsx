@@ -1,10 +1,12 @@
 import { Role } from '@/models';
 import { createUser } from '@/redux/states/user';
 import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 
 export const LoginButton = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     dispatch(
@@ -19,7 +21,7 @@ export const LoginButton = () => {
 
   return (
     <Button onClick={handleClick} color="inherit">
-      Login
+      {t('login')}
     </Button>
   );
 };

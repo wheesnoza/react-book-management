@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.19.0
   '@emotion/react': ^11.10.4
   '@emotion/styled': ^11.10.4
+  '@hookform/resolvers': ^2.9.8
   '@mui/material': ^5.10.4
   '@mui/system': ^5.4.1
   '@mui/types': ^7.2.0
@@ -41,6 +42,7 @@ specifiers:
 dependencies:
   '@emotion/react': 11.10.4_jzesbwkbmcauznusyf3xl355uu
   '@emotion/styled': 11.10.4_fegg7422thxjtv2g43ohoqlm7a
+  '@hookform/resolvers': 2.9.8_react-hook-form@7.35.0
   '@mui/material': 5.10.4_g6p6knjyjrjltwufjb7cltiueu
   '@mui/system': 5.10.4_wc57cflkzchz4hcfrsslybhb6e
   '@mui/x-data-grid': 5.17.3_7x3tnmrpyjhx3vi3ne7jspnmqu
@@ -543,6 +545,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@hookform/resolvers/2.9.8_react-hook-form@7.35.0:
+    resolution: {integrity: sha512-iVVjH0USq+1TqDdGkWe2M1x7Wn5OFPgVRo7CbWFsXTqqXqCaZtZcnzJu+UhljCWbthFWxWGXKLGYUDPZ04oVvQ==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.35.0_react@18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.10.4:
     resolution: {integrity: sha512-mXAIHxZT3Vcpg83opl1wGlVZ9xydbfZO3r5YfRSH6Gpp2J/PfdBP0wbDa2sO6/qRbcalpoevVyW6A/fI6LfeMw==}

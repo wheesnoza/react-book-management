@@ -1,6 +1,6 @@
 import useAuth from '@/hooks/useAuth';
 import { Button, Card, CardMedia, Grid } from '@mui/material';
-import bookImg from '@/assets/dummy_book_img.jpeg';
+import bookImg from '@/assets/dummy_book_img.png';
 import { generatePath, useNavigate } from 'react-router-dom';
 import { PrivateRoutes, Role } from '@/models';
 import styled from '@emotion/styled';

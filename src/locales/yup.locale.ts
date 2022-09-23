@@ -12,7 +12,7 @@ const config = {
       return `${label(prm)}次の値のいずれかでなければなりません:${prm.values
         .replace(/\s/g, '')
         .split(',')
-        .map(t)
+        .map((value: any) => t(`${prm.label}_${value}`))
         .join(', ')}`;
     },
   },

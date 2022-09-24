@@ -1,12 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputBaseProps, TextField } from '@mui/material';
 import { FieldErrors, UseFormRegister, UseFormTrigger } from 'react-hook-form';
-import { InputError, InputLabel, InputWrapper } from '@/styled-components';
-
-const formValidation = (errors: FieldErrors, errorKey: string) => {
-  const error = errors[errorKey];
-  return error && <InputError>{error.message?.toString()}</InputError>;
-};
+import { InputLabel, InputWrapper } from '@/styled-components';
+import { displayError, hasErrors } from '@/utilities';
 
 export enum InputType {
   NUMBER = 'number',
@@ -42,7 +38,7 @@ export const Input = ({
       <TextField
         disabled={disabled}
         type={type}
-        error={errors && !!errors[name]}
+        error={hasErrors(errors, name)}
         id={name}
         variant="standard"
         {...register(name)}
@@ -51,7 +47,7 @@ export const Input = ({
         fullWidth
         {...(required && { required })}
       />
-      {errors && formValidation(errors, name)}
+      {errors && displayError(errors, name)}
     </InputWrapper>
   );
 };

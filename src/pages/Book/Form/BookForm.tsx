@@ -1,9 +1,9 @@
-import { Button, Stack } from '@mui/material';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { Button, MenuItem, Stack } from '@mui/material';
 import { UseFormReturn } from 'react-hook-form';
-import { Input } from '@/components';
+import { Input, Select } from '@/components';
 import { InputType } from '@/components/Input';
-import { Book } from '@/models';
+import { Book, BookStatus } from '@/models';
 
 interface Props {
   form: UseFormReturn<Book>;
@@ -11,8 +11,9 @@ interface Props {
 }
 
 export const BookForm = ({ form, onSubmit }: Props) => {
-  const { register, handleSubmit, formState } = form;
+  const { register, handleSubmit, formState, control } = form;
   const { errors, isSubmitting } = formState;
+  const { t } = useTranslation();
 
   return (
     <Stack component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -37,13 +38,19 @@ export const BookForm = ({ form, onSubmit }: Props) => {
         name="stock"
         label={t('book.stock')}
       />
-      <Input
-        register={register}
-        errors={errors}
-        type={InputType.TEXT}
+      <Select
+        id="book-status"
         name="status"
         label={t('book.status')}
-      />
+        control={control}
+        defaultValue={BookStatus.AVAILABLE}
+      >
+        {Object.values(BookStatus).map((status) => (
+          <MenuItem key={status} value={status}>
+            {t(`book.status_${status}`)}
+          </MenuItem>
+        ))}
+      </Select>
       <Button variant="contained" type="submit" disabled={isSubmitting}>
         Post
       </Button>

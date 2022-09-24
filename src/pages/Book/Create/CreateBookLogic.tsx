@@ -8,13 +8,13 @@ import yup from '@/locales/yup.locale';
 import BookForm from '../Form/BookForm';
 
 const schema = yup.object().shape({
-  title: yup.string().label('book.title').required().max(80),
-  description: yup.string().label('book.description').required().max(250),
-  stock: yup.number().label('book.stock').required().min(1),
+  title: yup.string().label(t('book.title')).required().max(80),
+  description: yup.string().label(t('book.description')).required().max(250),
+  stock: yup.number().label(t('book.stock')).required().min(1),
   status: yup
     .string()
     .oneOf(Object.values(BookStatus))
-    .label('book.status')
+    .label(t('book.status'))
     .required(),
 });
 

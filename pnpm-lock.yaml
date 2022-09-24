@@ -29,6 +29,7 @@ specifiers:
   eslint-plugin-react: ^7.28.0
   eslint-plugin-react-hooks: ^4.3.0
   eslint-plugin-unused-imports: ^2.0.0
+  husky: ^8.0.1
   i18next: ^21.9.2
   prettier: ^2.7.1
   react: ^18.2.0
@@ -85,6 +86,7 @@ devDependencies:
   eslint-plugin-react: 7.31.8_eslint@8.23.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
   eslint-plugin-unused-imports: 2.0.0_zko7vy5ljylfnjbd43q67qnl6a
+  husky: 8.0.1
   prettier: 2.7.1
   typescript: 4.8.3
   vite: 3.1.0
@@ -2275,6 +2277,12 @@ packages:
     dependencies:
       void-elements: 3.1.0
     dev: false
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /i18next/21.9.2:
     resolution: {integrity: sha512-00fVrLQOwy45nm3OtC9l1WiLK3nJlIYSljgCt0qzTaAy65aciMdRy9GsuW+a2AtKtdg9/njUGfRH30LRupV7ZQ==}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { t } from 'i18next';
 import * as yup from 'yup';
 import { MessageParams } from 'yup/lib/types';

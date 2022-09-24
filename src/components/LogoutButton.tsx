@@ -1,7 +1,7 @@
-import { resetUser } from '@/redux/states/user';
 import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { resetUser } from '@/redux/states/user';
 
 export const LogoutButton = () => {
   const dispatch = useDispatch();

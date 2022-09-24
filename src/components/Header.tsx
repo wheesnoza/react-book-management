@@ -1,8 +1,8 @@
-import { useAuth } from '@/hooks';
-import { PrivateRoutes } from '@/models';
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { PrivateRoutes } from '@/models';
+import { useAuth } from '@/hooks';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 

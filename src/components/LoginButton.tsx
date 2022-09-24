@@ -1,8 +1,8 @@
-import { Role } from '@/models';
-import { createUser } from '@/redux/states/user';
 import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { createUser } from '@/redux/states/user';
+import { Role } from '@/models';
 
 export const LoginButton = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
+import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { Role } from '@/models';
 import { AppStore } from '@/redux/store';
-import { useSelector } from 'react-redux';
-import { Navigate, Outlet } from 'react-router-dom';
 
 interface Props {
   allowedRoles: Role[];

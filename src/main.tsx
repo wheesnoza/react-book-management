@@ -1,8 +1,8 @@
+import { I18nextProvider } from 'react-i18next';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './Reset.css';
-import { I18nextProvider } from 'react-i18next';
 import i18n from './locales/i18n';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

@@ -1,10 +1,10 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Role, User } from '@/models';
 import {
   clearLocalStorage,
   getOrDefaultLocalStorage,
   persistLocalStorage,
 } from '@/utilities';
-import { createSlice } from '@reduxjs/toolkit';
 
 export const DefaultUserState: User = {
   id: 0,

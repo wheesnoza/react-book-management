@@ -1,14 +1,14 @@
-import { Alert as AlertModel } from '@/models';
-import { alert as alertEvent } from '@/services/alert.service';
 import { Alert, Zoom } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Alert as AlertModel } from '@/models';
+import { alert as alertEvent } from '@/services';
 
 export const AlertWrap = () => {
   const [alert, setAlert] = useState<AlertModel>();
 
   useEffect(() => {
-    alertEvent.alert$.subscribe((alert) => {
-      setAlert(alert);
+    alertEvent.getAlert().subscribe((alertContent) => {
+      setAlert(alertContent);
     });
   }, []);
 

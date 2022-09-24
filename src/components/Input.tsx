@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { InputBaseProps, TextField } from '@mui/material';
 import { FieldErrors, UseFormRegister, UseFormTrigger } from 'react-hook-form';
 import { InputError, InputLabel, InputWrapper } from '@/styled-components';

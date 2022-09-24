@@ -1,13 +1,13 @@
-import { Input } from '@/components';
-import { InputType } from '@/components/Input';
-import { Book } from '@/models';
 import { Button, Stack } from '@mui/material';
 import { t } from 'i18next';
 import { UseFormReturn } from 'react-hook-form';
+import { Input } from '@/components';
+import { InputType } from '@/components/Input';
+import { Book } from '@/models';
 
 interface Props {
   form: UseFormReturn<Book>;
-  onSubmit: (book: Book) => any;
+  onSubmit: (book: Book) => void;
 }
 
 export const BookForm = ({ form, onSubmit }: Props) => {

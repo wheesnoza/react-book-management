@@ -1,6 +1,6 @@
-import { Applications } from '@/data';
 import { Box } from '@mui/material';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { Applications } from '@/data';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },

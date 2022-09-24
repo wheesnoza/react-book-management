@@ -1,23 +1,25 @@
-import { Alert, AlertLevel } from '@/models';
 import { firstValueFrom, Observable, Subject, timer } from 'rxjs';
 import { v4 as uuid } from 'uuid';
+import { Alert, AlertLevel } from '@/models';
 
 class AlertService {
-  private _state: Alert | undefined = {
+  private state: Alert | undefined = {
     id: '',
     message: '',
     level: AlertLevel.Error,
     autoDismiss: false,
   };
-  private _alertSubject = new Subject<Alert | undefined>();
-  private _alert$?: Observable<Alert | undefined>;
 
-  get alert$(): Observable<Alert | undefined> {
-    if (!this._alert$) {
-      this._alert$ = this._alertSubject.asObservable();
+  private alertSubject = new Subject<Alert | undefined>();
+
+  private alert?: Observable<Alert | undefined>;
+
+  getAlert(): Observable<Alert | undefined> {
+    if (!this.alert) {
+      this.alert = this.alertSubject.asObservable();
     }
 
-    return this._alert$;
+    return this.alert;
   }
 
   dismiss(): void {
@@ -27,7 +29,7 @@ class AlertService {
   display(
     message: string,
     level: AlertLevel = AlertLevel.Error,
-    autoDismiss: boolean = true
+    autoDismiss = true
   ): void {
     const alert: Alert = {
       id: uuid(),
@@ -44,13 +46,13 @@ class AlertService {
   }
 
   private create(alert: Alert): void {
-    this._state = alert;
-    this._alertSubject.next(this._state);
+    this.state = alert;
+    this.alertSubject.next(this.state);
   }
 
   private remove(): void {
-    this._state = undefined;
-    this._alertSubject.next(this._state);
+    this.state = undefined;
+    this.alertSubject.next(this.state);
   }
 }
 

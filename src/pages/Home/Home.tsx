@@ -1,15 +1,26 @@
 import { Button, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useAuth from '@/hooks/useAuth';
-import { PrivateRoutes, Role } from '@/models';
-import { books } from '@/data';
+import { Book, PrivateRoutes, Role } from '@/models';
 import { BookCard } from '@/components';
+import { alert } from '@/services';
 
 export const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { t } = useTranslation();
+  const [books, setBooks] = useState<Book[]>([]);
+
+  useEffect(() => {
+    fetch('/api/books')
+      .then((data) => data.json())
+      .then(setBooks)
+      .catch(() => {
+        alert.display('Something was wrong.');
+      });
+  }, []);
 
   return (
     <>

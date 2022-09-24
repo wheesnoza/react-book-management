@@ -4,12 +4,13 @@ import {
   PickersDay,
 } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Badge, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { BookCard } from '@/components';
-import { Book, BookStatus, Lend } from '@/models';
-import { bookData } from '@/data';
+import { AlertLevel, Book, BookStatus, Lend } from '@/models';
+import { alert } from '@/services';
 
 const StyledCalendar = styled(CalendarPicker)`
   margin: 0;
@@ -26,11 +27,19 @@ export const BookDetail = () => {
     thumbnail: '',
   });
   const [lends, setLends] = useState<Lend[]>([]);
+  const params = useParams<{ bookId: string }>();
 
   useEffect(() => {
-    setBook(bookData);
-    setLends(bookData.lends);
-  }, []);
+    fetch(`/api/book/${params.bookId}`)
+      .then((data) => data.json())
+      .then((bookData) => {
+        setBook(bookData);
+        setLends(bookData.lends);
+      })
+      .catch(() => {
+        alert.display('Something was wrong.', AlertLevel.Error);
+      });
+  }, [params.bookId]);
 
   return (
     <Grid container spacing={2}>

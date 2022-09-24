@@ -1,15 +1,10 @@
-import { Button, Card, CardMedia, Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { generatePath, useNavigate } from 'react-router-dom';
-import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import useAuth from '@/hooks/useAuth';
-import bookImg from '@/assets/dummy_book_img.png';
 import { PrivateRoutes, Role } from '@/models';
 import { books } from '@/data';
-
-const StyledCard = styled(Card)`
-  cursor: pointer;
-`;
+import { BookCard } from '@/components';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -29,16 +24,14 @@ export const Home = () => {
       <Grid container spacing={2} sx={{ marginTop: 2 }}>
         {books.map((book) => (
           <Grid key={book.id} item xs={6} md={2}>
-            <StyledCard
-              sx={{ display: 'flex' }}
+            <BookCard
+              book={book}
               onClick={() =>
                 navigate(
                   generatePath(PrivateRoutes.BOOK_DETAIL, { bookId: book.id })
                 )
               }
-            >
-              <CardMedia component="img" image={bookImg} alt={book.title} />
-            </StyledCard>
+            />
           </Grid>
         ))}
       </Grid>

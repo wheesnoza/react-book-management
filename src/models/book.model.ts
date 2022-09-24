@@ -9,4 +9,5 @@ export interface Book {
   description: string;
   stock: number;
   status: BookStatus;
+  thumbnail: string;
 }

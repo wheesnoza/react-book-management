@@ -3,17 +3,20 @@ import { Book, BookStatus } from '@/models';
 export const books: Book[] = [
   {
     id: 'a',
-    title: '',
-    description: '',
+    title: 'よくわかるSQL',
+    description:
+      'SQL初心者向けの書籍。ぜろからマスターまで勉強できる量になっている。',
     stock: 1,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'b',
     title: '',
     description: '',
-    stock: 5,
+    stock: 0,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'c',
@@ -21,6 +24,7 @@ export const books: Book[] = [
     description: '',
     stock: 1,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'd',
@@ -28,6 +32,7 @@ export const books: Book[] = [
     description: '',
     stock: 8,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'e',
@@ -35,6 +40,7 @@ export const books: Book[] = [
     description: '',
     stock: 1,
     status: BookStatus.UNAVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'f',
@@ -42,6 +48,7 @@ export const books: Book[] = [
     description: '',
     stock: 2,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'g',
@@ -49,6 +56,7 @@ export const books: Book[] = [
     description: '',
     stock: 1,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'h',
@@ -56,6 +64,7 @@ export const books: Book[] = [
     description: '',
     stock: 4,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'i',
@@ -63,6 +72,7 @@ export const books: Book[] = [
     description: '',
     stock: 2,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
   {
     id: 'j',
@@ -70,5 +80,6 @@ export const books: Book[] = [
     description: '',
     stock: 1,
     status: BookStatus.AVAILABLE,
+    thumbnail: 'https://picsum.photos/300/400',
   },
 ];

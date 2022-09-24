@@ -1,0 +1,82 @@
+[
+  {
+    "id": "a",
+    "title": "よくわかるSQL",
+    "description": "SQL初心者向けの書籍。ぜろからマスターまで勉強できる量になっている。",
+    "stock": 1,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "b",
+    "title": "",
+    "description": "",
+    "stock": 0,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "c",
+    "title": "",
+    "description": "",
+    "stock": 1,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "d",
+    "title": "",
+    "description": "",
+    "stock": 8,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "e",
+    "title": "",
+    "description": "",
+    "stock": 1,
+    "status": 1,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "f",
+    "title": "",
+    "description": "",
+    "stock": 2,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "g",
+    "title": "",
+    "description": "",
+    "stock": 1,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "h",
+    "title": "",
+    "description": "",
+    "stock": 4,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "i",
+    "title": "",
+    "description": "",
+    "stock": 2,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  },
+  {
+    "id": "j",
+    "title": "",
+    "description": "",
+    "stock": 1,
+    "status": 0,
+    "thumbnail": "https://picsum.photos/300/400"
+  }
+]

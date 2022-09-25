@@ -8,4 +8,7 @@ export const bookTranslations = {
   creation: '書籍追加',
   status_available: '利用可能',
   status_unavailable: '利用不可',
+  page: {
+    more: 'さらに表示する',
+  },
 };

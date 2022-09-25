@@ -1,28 +1,22 @@
 import { Button, Grid } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { generatePath, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useAuth from '@/hooks/useAuth';
-import { Book, PrivateRoutes, Role } from '@/models';
-import { BookCard } from '@/components';
-import { alert } from '@/services';
-import { bookAdapter } from '@/adapters';
+import { PrivateRoutes, Role } from '@/models';
+import BookPage from './components/BookPage';
 
 export const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { t } = useTranslation();
-  const [books, setBooks] = useState<Book[]>([]);
+  const [pageIndex, setPageIndex] = useState(1);
+  const pages = [];
 
-  useEffect(() => {
-    fetch('/api/books')
-      .then((data) => data.json())
-      .then((booksData) => booksData.map(bookAdapter))
-      .then(setBooks)
-      .catch(() => {
-        alert.display('Something was wrong.');
-      });
-  }, []);
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < pageIndex; i++) {
+    pages.push(<BookPage index={i} key={i} />);
+  }
 
   return (
     <>
@@ -35,19 +29,11 @@ export const Home = () => {
         </Button>
       )}
       <Grid container spacing={2} sx={{ marginTop: 2 }}>
-        {books.map((book) => (
-          <Grid key={book.id} item xs={6} md={2}>
-            <BookCard
-              book={book}
-              onClick={() =>
-                navigate(
-                  generatePath(PrivateRoutes.BOOK_DETAIL, { bookId: book.id })
-                )
-              }
-            />
-          </Grid>
-        ))}
+        {pages}
       </Grid>
+      <Button onClick={() => setPageIndex(pageIndex + 1)} variant="contained">
+        {t('book.page.more')}
+      </Button>
     </>
   );
 };

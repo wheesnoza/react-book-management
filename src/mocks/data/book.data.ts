@@ -27,7 +27,7 @@ export const book: BookWithLends = {
   ],
 };
 
-export const books: Book[] = [...Array(100).keys()].map(() => ({
+export const books: Book[] = [...Array(20).keys()].map(() => ({
   id: uuid(),
   title: faker.random.words(4),
   description: faker.lorem.text(),

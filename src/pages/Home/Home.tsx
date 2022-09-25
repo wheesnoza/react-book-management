@@ -6,6 +6,7 @@ import useAuth from '@/hooks/useAuth';
 import { Book, PrivateRoutes, Role } from '@/models';
 import { BookCard } from '@/components';
 import { alert } from '@/services';
+import { bookAdapter } from '@/adapters';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export const Home = () => {
   useEffect(() => {
     fetch('/api/books')
       .then((data) => data.json())
+      .then((booksData) => booksData.map(bookAdapter))
       .then(setBooks)
       .catch(() => {
         alert.display('Something was wrong.');

@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Badge, Grid, Typography } from '@mui/material';
 import { useState } from 'react';
-import { BookCard, BookDetailLoading } from '@/components';
+import { BookCard } from '@/components';
 import { useBook } from '@/hooks';
 
 const StyledCalendar = styled(CalendarPicker)`
@@ -18,15 +18,7 @@ const StyledCalendar = styled(CalendarPicker)`
 export const BookDetail = () => {
   const [date] = useState<Date>(new Date());
   const params = useParams<{ bookId: string }>();
-  const { book, lends, isLoading, isError } = useBook(params.bookId ?? '');
-
-  if (isLoading) {
-    return <BookDetailLoading />;
-  }
-
-  if (isError) {
-    return <h1>Error</h1>;
-  }
+  const { book, lends } = useBook(params.bookId ?? '');
 
   return (
     <Grid container spacing={2}>

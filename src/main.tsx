@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './Reset.css';
 import i18n from './locales/i18n';
-import { worker } from './mocks/browser';
 
 if (process.env.NODE_ENV === 'development') {
-  worker.start();
+  (async () => {
+    const { worker } = await import('./mocks/browser');
+    worker.start();
+  })();
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

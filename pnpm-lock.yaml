@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.19.0
   '@emotion/react': ^11.10.4
   '@emotion/styled': ^11.10.4
+  '@faker-js/faker': ^7.5.0
   '@hookform/resolvers': ^2.9.8
   '@mui/material': ^5.10.4
   '@mui/system': ^5.4.1
@@ -74,6 +75,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.19.0
+  '@faker-js/faker': 7.5.0
   '@mui/types': 7.2.0_@types+react@18.0.19
   '@types/react': 18.0.19
   '@types/react-dom': 18.0.6
@@ -562,6 +564,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/7.5.0:
+    resolution: {integrity: sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@hookform/resolvers/2.9.8_react-hook-form@7.35.0:

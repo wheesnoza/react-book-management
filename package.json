@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.0",
+    "@faker-js/faker": "^7.5.0",
     "@mui/types": "^7.2.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

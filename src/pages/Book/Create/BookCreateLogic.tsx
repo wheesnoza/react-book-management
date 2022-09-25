@@ -23,7 +23,7 @@ interface Props {
   onSubmit: (book: Book) => Promise<Book>;
 }
 
-export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
+export const BookCreateLogic = ({ defaultValues, onSubmit }: Props) => {
   const navigate = useNavigate();
   const form = useForm<Book>({
     mode: 'onSubmit',
@@ -43,4 +43,4 @@ export const CreateBookLogic = ({ defaultValues, onSubmit }: Props) => {
   return <BookForm form={form} onSubmit={handleSubmit} />;
 };
 
-export default CreateBookLogic;
+export default BookCreateLogic;

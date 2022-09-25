@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import { bookAdapter, lendAdapter } from '@/adapters';
 
 export const useBook = (id: string) => {
-  const { data, error } = useSWR(`/api/book/${id}`);
+  const { data, error } = useSWR(`/api/books/${id}`);
 
   return {
     book: bookAdapter(data),

@@ -20,7 +20,8 @@ const CreateLendPetition = lazy(
 const ApplicationList = lazy(
   () => import('@/pages/Application/List/ApplicationList')
 );
-const BookCreate = lazy(() => import('@/pages/Book/Create/CreateBook'));
+const BookCreate = lazy(() => import('@/pages/Book/Create/BookCreate'));
+const BookEdit = lazy(() => import('@/pages/Book/Edit/BookEdit'));
 
 function App() {
   return (
@@ -62,6 +63,10 @@ function App() {
                         <Route
                           path={PrivateRoutes.BOOK_CREATE}
                           element={<BookCreate />}
+                        />
+                        <Route
+                          path={PrivateRoutes.BOOK_EDIT}
+                          element={<BookEdit />}
                         />
                         <Route
                           path={PrivateRoutes.APPLICATIONS}

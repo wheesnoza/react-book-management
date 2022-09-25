@@ -3,7 +3,7 @@
   "title": "よくわかるSQL",
   "description": "SQL初心者向けの書籍。ぜろからマスターまで勉強できる量になっている。",
   "stock": 1,
-  "status": 1,
+  "status": "available",
   "thumbnail": "https://picsum.photos/300/400",
   "lends": [
     {

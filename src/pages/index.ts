@@ -1,8 +1,10 @@
 export { default as ApplicationDetail } from './Application/Detail/ApplicationDetail';
 export { default as ApplicationList } from './Application/List/ApplicationList';
-export { default as CreateBook } from './Book/Create/CreateBook';
-export { default as CreateBookLogic } from './Book/Create/CreateBookLogic';
+export { default as BookCreate } from './Book/Create/BookCreate';
+export { default as BookCreateLogic } from './Book/Create/BookCreateLogic';
 export { default as BookDetail } from './Book/Detail/BookDetail';
+export { default as BookEdit } from './Book/Edit/BookEdit';
+export { default as BookEditLogic } from './Book/Edit/BookEditLogic';
 export { default as BookForm } from './Book/Form/BookForm';
 export { default as Home } from './Home/Home';
 export { default as CreateLendPetition } from './Lend/Create/CreateLendPetition';

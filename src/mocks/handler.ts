@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { rest } from 'msw';
-import books from './data/books.data.json';
-import book from './data/book.data.json';
 import applications from './data/applications.data.json';
+import { book, books } from './data/book.data';
 
 export const handlers = [
   rest.get('/api/books', (req, res, ctx) => {

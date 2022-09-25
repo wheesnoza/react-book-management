@@ -1,16 +1,12 @@
 import useSWR from 'swr';
-import { fetcher } from '@/services';
 import { bookAdapter, lendAdapter } from '@/adapters';
 
 export const useBook = (id: string) => {
-  const { data, error } = useSWR(`/api/book/${id}`, fetcher);
-
-  const loading = !error && !data;
+  const { data, error } = useSWR(`/api/book/${id}`);
 
   return {
     book: bookAdapter(data),
-    lends: data?.lends.map(lendAdapter),
-    isLoading: loading,
+    lends: data.lends.map(lendAdapter),
     isError: error,
   };
 };

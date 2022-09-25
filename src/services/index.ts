@@ -1,2 +1,2 @@
 export * from './alert.service';
-export * from './fetcher.service';
+export { default as fetcherService } from './fetcher.service';

@@ -5,7 +5,7 @@ import './Reset.css';
 import i18n from './locales/i18n';
 
 if (process.env.NODE_ENV === 'development') {
-  (async () => {
+  await (async () => {
     const { worker } = await import('./mocks/browser');
     worker.start();
   })();

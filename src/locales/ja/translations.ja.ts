@@ -1,4 +1,5 @@
 import { bookTranslations } from './book.ja';
+import { procureTranslation } from './procure.ja';
 
 export const translations = {
   home: 'ホーム',
@@ -8,6 +9,7 @@ export const translations = {
   logout: 'ログアウト',
   'Total books loaded': '書籍表示数',
   book: bookTranslations,
+  procure: procureTranslation,
 };
 
 export default translations;

@@ -19,6 +19,8 @@ export const config = {
   string: {
     length: (prm: MessageParams & { length: number }) =>
       `${label(prm)}${prm.length}文字でなければなりません`,
+    url: (prm: MessageParams & { regex: RegExp }) =>
+      `${label(prm)}有効なURLでなければなりません`,
   },
   number: {
     min: (prm: MessageParams & { min: number }) =>

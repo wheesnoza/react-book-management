@@ -1,20 +1,54 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, MenuItem, Stack } from '@mui/material';
 import { UseFormReturn } from 'react-hook-form';
 import { Input, Select } from '@/components';
 import { InputType } from '@/components/Input';
-import { Procure, ProcureType } from '@/models';
+import { Book, ProcureType } from '@/models';
 import { onlyNumericValues } from '@/utilities';
+import { bookAdapter } from '@/adapters';
+import { alert } from '@/services';
+import Autocomplete, { AutocompleteOptions } from '@/components/Autocomplete';
+
+export interface ProcureForm {
+  type: ProcureType;
+  body: string;
+  url: string;
+  book?: { id: string; label: string };
+}
 
 interface Props {
-  form: UseFormReturn<Procure>;
-  onSubmit: (procure: Procure) => void;
+  form: UseFormReturn<ProcureForm>;
+  onSubmit: (procure: ProcureForm) => void;
 }
 
 export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
-  const { register, handleSubmit, formState, control } = form;
+  const { register, handleSubmit, formState, control, watch, resetField } =
+    form;
   const { errors, isSubmitting } = formState;
   const { t } = useTranslation();
+  const typeWatch = watch('type');
+  const [isReprocure, setIsReprocure] = useState(false);
+  const [bookOptions, setBookOptions] = useState<AutocompleteOptions[]>([]);
+
+  useEffect(() => {
+    if (typeWatch === ProcureType.BOOK_REPROCURE) {
+      fetch('/api/books')
+        .then((response) => response.json())
+        .then((data) => data.map(bookAdapter))
+        .then((books) =>
+          books.map((book: Book) => ({ label: book.title, id: book.id }))
+        )
+        .then(setBookOptions)
+        .then(() => setIsReprocure(true))
+        .catch(() => alert.displayError());
+      return;
+    }
+
+    resetField('book');
+    setIsReprocure(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [typeWatch]);
 
   return (
     <Stack component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -31,6 +65,16 @@ export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
           </MenuItem>
         ))}
       </Select>
+      {isReprocure && (
+        <Autocomplete
+          name="book"
+          errors={errors}
+          label={t('procure.book')}
+          control={control}
+          defaultValue={bookOptions[0]}
+          options={bookOptions}
+        />
+      )}
       <Input
         register={register}
         errors={errors}

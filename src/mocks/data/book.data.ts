@@ -6,6 +6,20 @@ type BookWithLends = Book & {
   lends: { from: string; to: string; user: User }[];
 };
 
+const lends = [...Array(12).keys()].map((value) => {
+  const lendSpan = faker.date.betweens(`2022/${value}/01`, `2022/${value}/20`);
+  return {
+    from: lendSpan[0].toString(),
+    to: lendSpan[1].toString(),
+    user: {
+      id: uuid(),
+      name: faker.name.fullName(),
+      email: faker.internet.email(),
+      role: faker.helpers.objectValue(Role),
+    },
+  };
+});
+
 export const book: BookWithLends = {
   id: uuid(),
   title: faker.random.words(4),
@@ -13,18 +27,7 @@ export const book: BookWithLends = {
   stock: parseInt(faker.random.numeric(1), 10),
   status: faker.helpers.objectValue(BookStatus),
   thumbnail: '/books/image',
-  lends: [
-    {
-      from: '2022/10/05',
-      to: '2022/10/25',
-      user: {
-        id: uuid(),
-        name: faker.name.fullName(),
-        email: faker.internet.email(),
-        role: faker.helpers.objectValue(Role),
-      },
-    },
-  ],
+  lends,
 };
 
 export const books: Book[] = [...Array(20).keys()].map(() => ({

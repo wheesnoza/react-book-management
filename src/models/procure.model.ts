@@ -4,7 +4,7 @@ import { onlyNumericValues } from '@/utilities';
 
 export enum ProcureType {
   BOOK_PROCURE,
-  BOOK_REPOCURE,
+  BOOK_REPROCURE,
 }
 
 export interface Procure {
@@ -12,6 +12,7 @@ export interface Procure {
   type: ProcureType;
   body: string;
   url: string;
+  bookId?: string;
 }
 
 export const procureSchema = yup.object().shape({
@@ -22,4 +23,12 @@ export const procureSchema = yup.object().shape({
     .required(),
   body: yup.string().label(t('procure.body')).required(),
   url: yup.string().url().label(t('procure.url')).required(),
+  book: yup
+    .object()
+    .when('type', {
+      is: (value: number) => value === ProcureType.BOOK_REPROCURE,
+      then: (schema) => schema.required(),
+      otherwise: (schema) => schema.optional(),
+    })
+    .label(t('procure.book')),
 });

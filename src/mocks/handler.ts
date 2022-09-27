@@ -5,10 +5,11 @@ import { book, books } from './data/book.data';
 
 export const handlers = [
   rest.get('/api/books', (req, res, ctx) => {
-    const PER_PAGE = 10;
-    const next =
-      parseInt(req.url.searchParams.get('page') ?? '0', 10) * PER_PAGE;
-    const data = books.slice(next - PER_PAGE, next);
+    const page = parseInt(req.url.searchParams.get('page') ?? '1', 10);
+    const limit = parseInt(req.url.searchParams.get('limit') ?? '10', 10);
+    const to = page * limit;
+    const from = to - limit;
+    const data = books.slice(from, to);
     return res(ctx.status(200), ctx.json(data));
   }),
   rest.get('/api/books/:bookId', (req, res, ctx) => {

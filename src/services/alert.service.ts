@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { firstValueFrom, Observable, Subject, timer } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Alert, AlertLevel } from '@/models';
@@ -24,6 +25,10 @@ class AlertService {
 
   dismiss(): void {
     this.remove();
+  }
+
+  displayError(message?: string): void {
+    this.display(message || t('error'), AlertLevel.Error);
   }
 
   display(

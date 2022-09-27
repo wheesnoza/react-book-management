@@ -12,7 +12,7 @@ export const book: BookWithLends = {
   description: faker.lorem.text(),
   stock: parseInt(faker.random.numeric(1), 10),
   status: faker.helpers.objectValue(BookStatus),
-  thumbnail: faker.image.image(300, 400),
+  thumbnail: '/books/image',
   lends: [
     {
       from: '2022/10/05',
@@ -33,5 +33,5 @@ export const books: Book[] = [...Array(20).keys()].map(() => ({
   description: faker.lorem.text(),
   stock: parseInt(faker.random.numeric(1), 10),
   status: faker.helpers.objectValue(BookStatus),
-  thumbnail: faker.image.image(300, 400),
+  thumbnail: '/books/image',
 }));

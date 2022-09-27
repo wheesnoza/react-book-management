@@ -13,6 +13,7 @@ specifiers:
   '@mui/x-date-pickers': ^5.0.2
   '@reactivex/rxjs': ^6.6.7
   '@reduxjs/toolkit': ^1.8.5
+  '@types/lodash': ^4.14.185
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/uuid': ^8.3.4
@@ -32,6 +33,7 @@ specifiers:
   eslint-plugin-unused-imports: ^2.0.0
   husky: ^8.0.1
   i18next: ^21.9.2
+  lodash: ^4.17.21
   msw: ^0.47.3
   prettier: ^2.7.1
   react: ^18.2.0
@@ -59,8 +61,10 @@ dependencies:
   '@mui/x-date-pickers': 5.0.2_5v3idpmmqjkbvknej3yzjj2s4m
   '@reactivex/rxjs': 6.6.7
   '@reduxjs/toolkit': 1.8.5_kkwg4cbsojnjnupd3btipussee
+  '@types/lodash': 4.14.185
   date-fns: 2.29.3
   i18next: 21.9.2
+  lodash: 4.17.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-error-boundary: 3.1.4_react@18.2.0

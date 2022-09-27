@@ -22,6 +22,9 @@ const ApplicationList = lazy(
 );
 const BookCreate = lazy(() => import('@/pages/Book/Create/BookCreate'));
 const BookEdit = lazy(() => import('@/pages/Book/Edit/BookEdit'));
+const ProcurePetition = lazy(
+  () => import('@/pages/Procure/Create/ProcurePetition')
+);
 
 function App() {
   return (
@@ -45,6 +48,10 @@ function App() {
                     </Route>
                     <Route element={<AuthGuard />}>
                       <Route path={PrivateRoutes.HOME} element={<Home />} />
+                      <Route
+                        path={PrivateRoutes.BOOK_PROCURE_PETITION}
+                        element={<ProcurePetition />}
+                      />
                       <Route
                         path={PrivateRoutes.BOOK_LEND_PETITION}
                         element={<CreateLendPetition />}

@@ -9,6 +9,7 @@ import LogoutButton from './LogoutButton';
 const pages = [
   { label: 'home', url: PrivateRoutes.HOME },
   { label: 'applications', url: PrivateRoutes.APPLICATIONS },
+  { label: 'procure.petition', url: PrivateRoutes.BOOK_PROCURE_PETITION },
 ];
 
 export const Header = () => {

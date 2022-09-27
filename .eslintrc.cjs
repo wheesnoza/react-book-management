@@ -30,6 +30,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'unused-imports/no-unused-imports': 'error',
     'import/no-extraneous-dependencies': ['off'],
+    'react/no-array-index-key': ['off'],
     'unused-imports/no-unused-vars': [
       'warn',
       {

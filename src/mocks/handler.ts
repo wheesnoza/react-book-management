@@ -24,4 +24,7 @@ export const handlers = [
   rest.get('/api/applications', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(applications));
   }),
+  rest.post('/api/procures', (req, res, ctx) => {
+    return res(ctx.status(201), ctx.json(req.body));
+  }),
 ];

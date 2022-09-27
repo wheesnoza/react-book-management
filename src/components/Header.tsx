@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Toolbar } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { PrivateRoutes } from '@/models';
+import { PrivateRoutes, Role } from '@/models';
 import { useAuth } from '@/hooks';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
@@ -12,7 +12,7 @@ const pages = [
 ];
 
 export const Header = () => {
-  const { authenticated } = useAuth();
+  const { user, authenticated } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -32,6 +32,14 @@ export const Header = () => {
                     {t(page.label)}
                   </Button>
                 ))}
+                {[Role.ADMIN, Role.CORPORATE].includes(user.role) && (
+                  <Button
+                    sx={{ color: 'white', display: 'block' }}
+                    onClick={() => navigate(PrivateRoutes.BOOK_CREATE)}
+                  >
+                    {t('book.creation')}
+                  </Button>
+                )}
               </Box>
               <LogoutButton />
             </>

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Badge, Card, CardMedia, CardProps } from '@mui/material';
 import { Book } from '@/models';
+import dummyImage from '../assets/dummy_book_img.png';
 
 const StyledCard = styled(Card)`
   cursor: pointer;
@@ -18,7 +19,7 @@ export const BookCard = ({ book, ...props }: Props) => {
       max={999}
     >
       <StyledCard {...props}>
-        <CardMedia component="img" src={book.thumbnail} alt={book.title} />
+        <CardMedia component="img" src={dummyImage} alt={book.title} />
       </StyledCard>
     </Badge>
   );

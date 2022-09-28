@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { v4 as uuid } from 'uuid';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { generatePath, useNavigate } from 'react-router-dom';
@@ -7,21 +8,19 @@ import { AlertLevel, PrivateRoutes, Procure, procureSchema } from '@/models';
 import { alert } from '@/services';
 
 interface Props {
-  defaultValues: Procure;
   onSubmit: (procure: Procure) => Promise<Procure>;
 }
 
-export const ProcurePetitionLogic = ({ defaultValues, onSubmit }: Props) => {
+export const ProcurePetitionLogic = ({ onSubmit }: Props) => {
   const navigate = useNavigate();
   const form = useForm<ProcureForm>({
     mode: 'onSubmit',
-    defaultValues,
     resolver: yupResolver(procureSchema),
   });
 
   const handleSubmit = async (procureForm: ProcureForm) => {
     const procure: Procure = {
-      ...defaultValues,
+      id: uuid(),
       type: procureForm.type,
       body: procureForm.body,
       url: procureForm.url,
@@ -36,7 +35,7 @@ export const ProcurePetitionLogic = ({ defaultValues, onSubmit }: Props) => {
         );
         alert.display(t('procure.created'), AlertLevel.Success);
       })
-      .catch(() => alert.display(t('error'), AlertLevel.Error));
+      .catch(() => alert.displayError());
   };
 
   return <ProcurePetitionForm form={form} onSubmit={handleSubmit} />;

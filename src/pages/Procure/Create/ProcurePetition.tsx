@@ -1,13 +1,5 @@
-import { v4 as uuid } from 'uuid';
 import ProcurePetitionLogic from './ProcurePetitionLogic';
-import { Procure, ProcureType } from '@/models';
-
-const defaultProcure = {
-  id: uuid(),
-  type: ProcureType.BOOK_PROCURE,
-  body: '',
-  url: '',
-};
+import { Procure } from '@/models';
 
 export const ProcurePetition = () => {
   const handleSubmit = (procure: Procure) => {
@@ -18,12 +10,7 @@ export const ProcurePetition = () => {
     }).then((response) => response.json());
   };
 
-  return (
-    <ProcurePetitionLogic
-      defaultValues={defaultProcure}
-      onSubmit={handleSubmit}
-    />
-  );
+  return <ProcurePetitionLogic onSubmit={handleSubmit} />;
 };
 
 export default ProcurePetition;

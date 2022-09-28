@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { generatePath, useNavigate } from 'react-router-dom';
 import { alert } from '@/services/alert.service';
 import { AlertLevel, Book, bookSchema, PrivateRoutes } from '@/models';
-import BookForm from '../Form/BookForm';
+import BookFormView from '../Form/BookFormView';
 
 interface Props {
   defaultValues: Book;
@@ -28,7 +28,7 @@ export const BookEditLogic = ({ defaultValues, onSubmit }: Props) => {
       .catch(() => alert.display(t('error'), AlertLevel.Error));
   };
 
-  return <BookForm form={form} onSubmit={handleSubmit} />;
+  return <BookFormView form={form} onSubmit={handleSubmit} />;
 };
 
 export default BookEditLogic;

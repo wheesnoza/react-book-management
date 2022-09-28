@@ -5,12 +5,20 @@ import { Input, Select } from '@/components';
 import { InputType } from '@/components/Input';
 import { Book, BookStatus } from '@/models';
 
+export interface BookForm {
+  title: string;
+  description: string;
+  stock: number;
+  status: BookStatus;
+  thumbnail: string;
+}
+
 interface Props {
   form: UseFormReturn<Book>;
   onSubmit: (book: Book) => void;
 }
 
-export const BookForm = ({ form, onSubmit }: Props) => {
+export const BookFormView = ({ form, onSubmit }: Props) => {
   const { register, handleSubmit, formState, control } = form;
   const { errors, isSubmitting } = formState;
   const { t } = useTranslation();
@@ -58,4 +66,4 @@ export const BookForm = ({ form, onSubmit }: Props) => {
   );
 };
 
-export default BookForm;
+export default BookFormView;

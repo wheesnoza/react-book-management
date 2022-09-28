@@ -1,9 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { omit } from 'lodash';
 import { v4 as uuid } from 'uuid';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { generatePath, useNavigate } from 'react-router-dom';
-import ProcurePetitionForm, { ProcureForm } from '../Form/ProcurePetitionForm';
+import ProcurePetitionFormView, {
+  ProcureForm,
+} from '../Form/ProcurePetitionFormView';
 import { AlertLevel, PrivateRoutes, Procure, procureSchema } from '@/models';
 import { alert } from '@/services';
 
@@ -21,10 +24,8 @@ export const ProcurePetitionLogic = ({ onSubmit }: Props) => {
   const handleSubmit = async (procureForm: ProcureForm) => {
     const procure: Procure = {
       id: uuid(),
-      type: procureForm.type,
-      body: procureForm.body,
-      url: procureForm.url,
       bookId: procureForm.book?.id,
+      ...omit(procureForm, 'book'),
     };
     await onSubmit(procure)
       .then(() => {
@@ -38,7 +39,7 @@ export const ProcurePetitionLogic = ({ onSubmit }: Props) => {
       .catch(() => alert.displayError());
   };
 
-  return <ProcurePetitionForm form={form} onSubmit={handleSubmit} />;
+  return <ProcurePetitionFormView form={form} onSubmit={handleSubmit} />;
 };
 
 export default ProcurePetitionLogic;

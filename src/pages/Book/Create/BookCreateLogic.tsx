@@ -1,25 +1,28 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { v4 as uuid } from 'uuid';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { generatePath, useNavigate } from 'react-router-dom';
 import { alert } from '@/services/alert.service';
 import { AlertLevel, Book, bookSchema, PrivateRoutes } from '@/models';
-import BookForm from '../Form/BookForm';
+import BookFormView, { BookForm } from '../Form/BookFormView';
 
 interface Props {
-  defaultValues: Book;
   onSubmit: (book: Book) => Promise<Book>;
 }
 
-export const BookCreateLogic = ({ defaultValues, onSubmit }: Props) => {
+export const BookCreateLogic = ({ onSubmit }: Props) => {
   const navigate = useNavigate();
   const form = useForm<Book>({
     mode: 'onSubmit',
-    defaultValues,
     resolver: yupResolver(bookSchema),
   });
 
-  const handleSubmit = async (book: Book) => {
+  const handleSubmit = async (bookForm: BookForm) => {
+    const book: Book = {
+      ...bookForm,
+      id: uuid(),
+    };
     await onSubmit(book)
       .then(() => {
         navigate(generatePath(PrivateRoutes.BOOK_DETAIL, { bookId: book.id }));
@@ -28,7 +31,7 @@ export const BookCreateLogic = ({ defaultValues, onSubmit }: Props) => {
       .catch(() => alert.display(t('error'), AlertLevel.Error));
   };
 
-  return <BookForm form={form} onSubmit={handleSubmit} />;
+  return <BookFormView form={form} onSubmit={handleSubmit} />;
 };
 
 export default BookCreateLogic;

@@ -1,15 +1,5 @@
-import { v4 as uuid } from 'uuid';
-import { Book, BookStatus } from '@/models';
+import { Book } from '@/models';
 import CreateBookLogic from './BookCreateLogic';
-
-const defaultBook = {
-  id: uuid(),
-  title: '',
-  description: '',
-  stock: 0,
-  status: BookStatus.AVAILABLE,
-  thumbnail: '',
-};
 
 export const BookCreate = () => {
   const handleSubmit = (book: Book) => {
@@ -22,9 +12,7 @@ export const BookCreate = () => {
     }).then((response) => response.json());
   };
 
-  return (
-    <CreateBookLogic defaultValues={defaultBook} onSubmit={handleSubmit} />
-  );
+  return <CreateBookLogic onSubmit={handleSubmit} />;
 };
 
 export default BookCreate;

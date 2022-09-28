@@ -23,7 +23,7 @@ interface Props {
   onSubmit: (procure: ProcureForm) => void;
 }
 
-export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
+export const ProcurePetitionFormView = ({ form, onSubmit }: Props) => {
   const { register, handleSubmit, formState, control, watch, resetField } =
     form;
   const { errors, isSubmitting } = formState;
@@ -98,4 +98,4 @@ export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
   );
 };
 
-export default ProcurePetitionForm;
+export default ProcurePetitionFormView;

@@ -24,7 +24,7 @@ export const book: BookWithLends = {
   id: uuid(),
   title: faker.random.words(4),
   description: faker.lorem.text(),
-  stock: parseInt(faker.random.numeric(1), 10),
+  stock: parseInt(faker.random.numeric(), 10),
   status: faker.helpers.objectValue(BookStatus),
   thumbnail: '/books/image',
   lends,
@@ -34,7 +34,7 @@ export const books: Book[] = [...Array(20).keys()].map(() => ({
   id: uuid(),
   title: faker.random.words(4),
   description: faker.lorem.text(),
-  stock: parseInt(faker.random.numeric(1), 10),
+  stock: parseInt(faker.random.numeric(), 10),
   status: faker.helpers.objectValue(BookStatus),
   thumbnail: '/books/image',
 }));

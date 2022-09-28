@@ -11,6 +11,7 @@ export { default as BookList } from './Home/components/BookList';
 export { default as BookPage } from './Home/components/BookPage';
 export { default as CreateLendPetition } from './Lend/Create/CreateLendPetition';
 export { default as Login } from './Login/Login';
+export { default as NotFound } from './NotFound/NotFound';
 export { default as ProcurePetition } from './Procure/Create/ProcurePetition';
 export { default as ProcurePetitionLogic } from './Procure/Create/ProcurePetitionLogic';
 export { default as ProcurePetitionFormView } from './Procure/Form/ProcurePetitionFormView';

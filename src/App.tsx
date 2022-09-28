@@ -25,20 +25,21 @@ const BookEdit = lazy(() => import('@/pages/Book/Edit/BookEdit'));
 const ProcurePetition = lazy(
   () => import('@/pages/Procure/Create/ProcurePetition')
 );
+const NotFound = lazy(() => import('@/pages/NotFound/NotFound'));
 
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <Provider store={store}>
-        <Suspense fallback={<LinearProgress />}>
+        <BrowserRouter>
           <SWRConfig
             value={{
               fetcher: fetcherService,
               suspense: true,
             }}
           >
-            <BrowserRouter>
-              <Header />
+            <Header />
+            <Suspense fallback={<LinearProgress />}>
               <Alert />
               <Container maxWidth="lg">
                 <ErrorBoundary fallback={<Error />}>
@@ -81,13 +82,13 @@ function App() {
                         />
                       </Route>
                     </Route>
-                    <Route path="*" element={<>NOT FOUND</>} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </ErrorBoundary>
               </Container>
-            </BrowserRouter>
+            </Suspense>
           </SWRConfig>
-        </Suspense>
+        </BrowserRouter>
       </Provider>
     </ThemeProvider>
   );

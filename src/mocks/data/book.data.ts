@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/ja';
 import { v4 as uuid } from 'uuid';
 import { Book, BookStatus, Role, User } from '@/models';
 
@@ -22,7 +22,7 @@ const lends = [...Array(12).keys()].map((value) => {
 
 export const book: BookWithLends = {
   id: uuid(),
-  title: faker.random.words(4),
+  title: faker.lorem.words(),
   description: faker.lorem.text(),
   stock: parseInt(faker.random.numeric(), 10),
   status: faker.helpers.objectValue(BookStatus),
@@ -32,7 +32,7 @@ export const book: BookWithLends = {
 
 export const books: Book[] = [...Array(20).keys()].map(() => ({
   id: uuid(),
-  title: faker.random.words(4),
+  title: faker.lorem.words(),
   description: faker.lorem.text(),
   stock: parseInt(faker.random.numeric(), 10),
   status: faker.helpers.objectValue(BookStatus),

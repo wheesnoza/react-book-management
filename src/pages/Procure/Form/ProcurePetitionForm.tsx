@@ -9,6 +9,7 @@ import { onlyNumericValues } from '@/utilities';
 import { bookAdapter } from '@/adapters';
 import { alert } from '@/services';
 import Autocomplete, { AutocompleteOptions } from '@/components/Autocomplete';
+import { useBoolean } from '@/hooks';
 
 export interface ProcureForm {
   type: ProcureType;
@@ -28,7 +29,8 @@ export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
   const { errors, isSubmitting } = formState;
   const { t } = useTranslation();
   const typeWatch = watch('type');
-  const [isReprocure, setIsReprocure] = useState(false);
+  const [isReprocure, { on: setToreprocure, off: setToprocure }] =
+    useBoolean(false);
   const [bookOptions, setBookOptions] = useState<AutocompleteOptions[]>([]);
 
   useEffect(() => {
@@ -40,13 +42,13 @@ export const ProcurePetitionForm = ({ form, onSubmit }: Props) => {
           books.map((book: Book) => ({ label: book.title, id: book.id }))
         )
         .then(setBookOptions)
-        .then(() => setIsReprocure(true))
+        .then(setToreprocure)
         .catch(() => alert.displayError());
       return;
     }
 
     resetField('book');
-    setIsReprocure(false);
+    setToprocure();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeWatch]);
 

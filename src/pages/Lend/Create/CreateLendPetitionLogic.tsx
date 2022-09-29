@@ -32,7 +32,6 @@ export const CreateLendPetitionLogic = ({ book, onSubmit }: Props) => {
       book,
       user,
     };
-    console.log(lend);
     await onSubmit(lend)
       .then(() => {
         navigate(generatePath(PrivateRoutes.BOOK_DETAIL, { bookId: book.id }));

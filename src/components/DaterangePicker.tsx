@@ -9,6 +9,7 @@ interface Props {
   name: string;
   label: string;
   defaultValue?: Date[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any, any>;
   errors?: FieldErrors;
 }

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useBook } from '@/hooks';
 import { Lend } from '@/models';
@@ -8,11 +9,9 @@ export const CreateLendPetition = () => {
   const { book } = useBook(bookId ?? '');
 
   const handleSubmit = (lend: Lend) => {
-    return fetch('/api/lends', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(lend),
-    }).then((response) => response.json());
+    return axios
+      .post<Lend>('/api/lends', lend)
+      .then((response) => response.data);
   };
   return <CreateLendPetitionLogic onSubmit={handleSubmit} book={book} />;
 };

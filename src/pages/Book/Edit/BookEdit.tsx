@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Book } from '@/models';
 import { useBook } from '@/hooks';
@@ -8,13 +9,9 @@ export const BookEdit = () => {
   const { book } = useBook(bookId ?? '');
 
   const handleSubmit = (editedBook: Book) => {
-    return fetch(`/api/books/${bookId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(editedBook),
-    }).then((response) => response.json());
+    return axios
+      .put<Book>(`/api/books/${bookId}`, editedBook)
+      .then((response) => response.data);
   };
 
   return <BookEditLogic defaultValues={book} onSubmit={handleSubmit} />;

@@ -20,8 +20,8 @@ export const BookCreateLogic = ({ onSubmit }: Props) => {
 
   const handleSubmit = async (bookForm: BookForm) => {
     const book: Book = {
-      ...bookForm,
       id: uuid(),
+      ...bookForm,
     };
     await onSubmit(book)
       .then(() => {

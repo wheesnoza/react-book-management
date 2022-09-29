@@ -1,9 +1,6 @@
+import axios from 'axios';
+
 export const fetcher = (url: string) =>
-  fetch(url).then((res) => {
-    if (!res.ok) {
-      throw new Error();
-    }
-    return res.json();
-  });
+  axios.get(url).then((response) => response.data);
 
 export default fetcher;

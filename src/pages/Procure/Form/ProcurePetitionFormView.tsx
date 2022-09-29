@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, MenuItem, Stack } from '@mui/material';
 import { UseFormReturn } from 'react-hook-form';
+import axios from 'axios';
 import { Input, Select } from '@/components';
 import { InputType } from '@/components/Input';
 import { Book, ProcureType } from '@/models';
@@ -35,8 +36,9 @@ export const ProcurePetitionFormView = ({ form, onSubmit }: Props) => {
 
   useEffect(() => {
     if (typeWatch === ProcureType.BOOK_REPROCURE) {
-      fetch('/api/books')
-        .then((response) => response.json())
+      axios
+        .get('/api/books')
+        .then((response) => response.data)
         .then((data) => data.map(bookAdapter))
         .then((books) =>
           books.map((book: Book) => ({ label: book.title, id: book.id }))
@@ -44,6 +46,7 @@ export const ProcurePetitionFormView = ({ form, onSubmit }: Props) => {
         .then(setBookOptions)
         .then(setToreprocure)
         .catch(() => alert.displayError());
+
       return;
     }
 

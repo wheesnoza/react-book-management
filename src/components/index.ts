@@ -1,6 +1,9 @@
 export { default as Alert } from './Alert';
+export { default as Autocomplete } from './Autocomplete';
 export { default as BookCard } from './BookCard';
 export { default as BookDetailLoading } from './BookDetailLoading';
+export { default as BookLendsCalendar } from './BookLendsCalendar';
+export { default as DaterangePicker } from './DaterangePicker';
 export { default as Error } from './Error';
 export { default as Header } from './Header';
 export { default as Input } from './Input';

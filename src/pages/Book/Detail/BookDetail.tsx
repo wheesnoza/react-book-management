@@ -1,25 +1,12 @@
-import {
-  CalendarPicker,
-  LocalizationProvider,
-  PickersDay,
-} from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
-import styled from '@emotion/styled';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
-import { Avatar, Badge, Button, Grid, Typography } from '@mui/material';
-import { useState } from 'react';
-import { BookCard } from '@/components';
+import { Button, Grid, Typography } from '@mui/material';
+import { BookCard, BookLendsCalendar } from '@/components';
 import { useAuth, useBook } from '@/hooks';
-import { Lend, PrivateRoutes, Role } from '@/models';
-import dummyImage from '../../../assets/dummy_book_img.png';
-
-const StyledCalendar = styled(CalendarPicker)`
-  margin: 0;
-`;
+import { PrivateRoutes, Role } from '@/models';
 
 export const BookDetail = () => {
-  const [date] = useState<Date>(new Date());
   const params = useParams<{ bookId: string }>();
   const { book, lends } = useBook(params.bookId ?? '');
   const { t } = useTranslation();
@@ -46,36 +33,7 @@ export const BookDetail = () => {
         )}
         <Typography variant="h3">{book.title}</Typography>
         <Typography variant="subtitle1">{book.description}</Typography>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <StyledCalendar
-            date={date}
-            readOnly
-            onChange={() => {}}
-            renderDay={(day, _value, DayComponentProps) => {
-              const renderDay = day as Date;
-              const hasLend = lends.some(
-                (lend: Lend) => lend.from <= renderDay && renderDay <= lend.to
-              );
-              return (
-                <Badge
-                  key={renderDay.toString()}
-                  overlap="circular"
-                  badgeContent={
-                    hasLend ? (
-                      <Avatar
-                        alt="Remy Sharp"
-                        src={dummyImage}
-                        sx={{ width: 15, height: 15 }}
-                      />
-                    ) : undefined
-                  }
-                >
-                  <PickersDay {...DayComponentProps} disabled={hasLend} />
-                </Badge>
-              );
-            }}
-          />
-        </LocalizationProvider>
+        <BookLendsCalendar lends={lends} />
       </Grid>
     </Grid>
   );

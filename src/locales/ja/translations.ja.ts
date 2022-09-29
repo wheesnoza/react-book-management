@@ -1,4 +1,5 @@
 import { bookTranslations } from './book.ja';
+import { lendTranslations } from './lend.ja';
 import { procureTranslation } from './procure.ja';
 
 export const translations = {
@@ -10,6 +11,7 @@ export const translations = {
   'Total books loaded': '書籍表示数',
   book: bookTranslations,
   procure: procureTranslation,
+  lend: lendTranslations,
 };
 
 export default translations;

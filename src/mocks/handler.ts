@@ -27,4 +27,7 @@ export const handlers = [
   rest.post('/api/procures', (req, res, ctx) => {
     return res(ctx.status(201), ctx.json(req.body));
   }),
+  rest.post('/api/lends', (req, res, ctx) => {
+    return res(ctx.status(201), ctx.json(req.body));
+  }),
 ];

@@ -1,5 +1,4 @@
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import { Button, Grid, Typography } from '@mui/material';
 import { BookCard, BookLendsCalendar } from '@/components';
@@ -7,8 +6,8 @@ import { useAuth, useBook } from '@/hooks';
 import { PrivateRoutes, Role } from '@/models';
 
 export const BookDetail = () => {
-  const params = useParams<{ bookId: string }>();
-  const { book, lends } = useBook(params.bookId ?? '');
+  const { bookId } = useParams<{ bookId: string }>();
+  const { book, lends } = useBook(bookId ?? '');
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();

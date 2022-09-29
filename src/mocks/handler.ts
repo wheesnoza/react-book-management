@@ -13,21 +13,24 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(data));
   }),
   rest.get('/api/books/:bookId', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(book));
+    if (req.params.bookId === 'not-found') {
+      return res(ctx.delay(2000), ctx.status(404));
+    }
+    return res(ctx.delay(2000), ctx.status(200), ctx.json(book));
   }),
   rest.post('/api/books', (req, res, ctx) => {
-    return res(ctx.status(201), ctx.json(req.body));
+    return res(ctx.delay(2000), ctx.status(201), ctx.json(req.body));
   }),
   rest.put('/api/books/:bookId', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(req.body));
+    return res(ctx.delay(2000), ctx.status(200), ctx.json(req.body));
   }),
   rest.get('/api/applications', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(applications));
+    return res(ctx.delay(2000), ctx.status(200), ctx.json(applications));
   }),
   rest.post('/api/procures', (req, res, ctx) => {
-    return res(ctx.status(201), ctx.json(req.body));
+    return res(ctx.delay(2000), ctx.status(201), ctx.json(req.body));
   }),
   rest.post('/api/lends', (req, res, ctx) => {
-    return res(ctx.status(201), ctx.json(req.body));
+    return res(ctx.delay(2000), ctx.status(201), ctx.json(req.body));
   }),
 ];

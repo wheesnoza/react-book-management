@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PrivateRoutes } from '@/models';
 
 const Container = styled.div`
@@ -12,8 +12,11 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export const NotFound = () => {
-  const navigate = useNavigate();
+type Props = {
+  resetErrorBoundary: (...args: Array<unknown>) => void;
+};
+
+export const NotFound = ({ resetErrorBoundary }: Props) => {
   const { t } = useTranslation();
   return (
     <Container>
@@ -22,9 +25,9 @@ export const NotFound = () => {
         <Typography variant="h5">
           お探しのページが見つかりませんでした。
         </Typography>
-        <Button size="large" onClick={() => navigate(PrivateRoutes.HOME)}>
-          {t('home')}へ戻る
-        </Button>
+        <Link to={PrivateRoutes.HOME} onClick={resetErrorBoundary}>
+          {t('Back to home')}
+        </Link>
       </Typography>
     </Container>
   );

@@ -9,6 +9,7 @@ export const translations = {
   login: 'ログイン',
   logout: 'ログアウト',
   'Total books loaded': '書籍表示数',
+  'Back to home': 'ホームへ戻る',
   book: bookTranslations,
   procure: procureTranslation,
   lend: lendTranslations,

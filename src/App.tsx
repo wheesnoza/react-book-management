@@ -4,7 +4,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SWRConfig } from 'swr';
-import { Alert, Error, Header } from './components';
+import { Alert, ErrorFallbackHandler, Header } from './components';
 import { AuthGuard, GuestGuard, RoleGuard } from './guards';
 import { PrivateRoutes, PublicRoutes, Role } from './models';
 import store from './redux/store';
@@ -39,10 +39,10 @@ function App() {
             }}
           >
             <Header />
-            <Suspense fallback={<LinearProgress />}>
-              <Alert />
-              <Container maxWidth="lg">
-                <ErrorBoundary fallback={<Error />}>
+            <ErrorBoundary FallbackComponent={ErrorFallbackHandler}>
+              <Suspense fallback={<LinearProgress />}>
+                <Alert />
+                <Container maxWidth="lg">
                   <Routes>
                     <Route element={<GuestGuard />}>
                       <Route path={PublicRoutes.LOGIN} element={<Login />} />
@@ -84,9 +84,9 @@ function App() {
                     </Route>
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                </ErrorBoundary>
-              </Container>
-            </Suspense>
+                </Container>
+              </Suspense>
+            </ErrorBoundary>
           </SWRConfig>
         </BrowserRouter>
       </Provider>

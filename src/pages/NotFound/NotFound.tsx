@@ -1,16 +1,7 @@
-import styled from '@emotion/styled';
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes } from '@/models';
-
-const Container = styled.div`
-  widht: 500px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 type Props = {
   resetErrorBoundary: (...args: Array<unknown>) => void;
@@ -18,18 +9,33 @@ type Props = {
 
 export const NotFound = ({ resetErrorBoundary }: Props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   return (
-    <Container>
-      <Typography align="center" variant="h1" color="gray">
-        404 Not Found
-        <Typography variant="h5">
-          お探しのページが見つかりませんでした。
-        </Typography>
-        <Link to={PrivateRoutes.HOME} onClick={resetErrorBoundary}>
-          {t('Back to home')}
-        </Link>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        minHeight: '80vh',
+      }}
+    >
+      <Typography variant="h1" color="gray">
+        404
       </Typography>
-    </Container>
+      <Typography variant="h6" color="gray" marginBottom={2}>
+        {t("The page you're looking for doesn't exist.")}
+      </Typography>
+      <Button
+        variant="contained"
+        onClick={() => {
+          resetErrorBoundary();
+          navigate(PrivateRoutes.HOME);
+        }}
+      >
+        {t('Back to home')}
+      </Button>
+    </Box>
   );
 };
 

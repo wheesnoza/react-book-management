@@ -15,9 +15,11 @@ export const SomethinWentWrongError = ({ resetErrorBoundary }: Props) => {
       <Typography variant="subtitle2">
         {t('An error ocurred')} — <strong>{t('please try later.')}</strong>
       </Typography>
-      <Link to={PrivateRoutes.HOME} onClick={resetErrorBoundary}>
-        {t('Back to home')}
-      </Link>
+      <Typography variant="body1">
+        <Link to={PrivateRoutes.HOME} onClick={resetErrorBoundary}>
+          {t('Back to home')}
+        </Link>
+      </Typography>
     </Alert>
   );
 };

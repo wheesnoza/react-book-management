@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 import { Alert, ErrorFallbackHandler, Header } from './components';
 import { AuthGuard, GuestGuard, RoleGuard } from './guards';
-import { PrivateRoutes, PublicRoutes, Role } from './models';
+import { PrivateRoutes, PublicRoutes, Role, swrConfig } from './models';
 import store from './redux/store';
 import { fetcherService } from './services';
 import { appTheme } from './themes';
@@ -32,12 +32,7 @@ function App() {
     <ThemeProvider theme={appTheme}>
       <Provider store={store}>
         <BrowserRouter>
-          <SWRConfig
-            value={{
-              fetcher: fetcherService,
-              suspense: true,
-            }}
-          >
+          <SWRConfig value={{ ...swrConfig, fetcher: fetcherService }}>
             <Header />
             <ErrorBoundary FallbackComponent={ErrorFallbackHandler}>
               <Suspense fallback={<LinearProgress />}>

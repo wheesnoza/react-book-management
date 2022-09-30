@@ -10,6 +10,8 @@ export const translations = {
   logout: 'ログアウト',
   'Total books loaded': '書籍表示数',
   'Back to home': 'ホームへ戻る',
+  "The page you're looking for doesn't exist.":
+    'お探しのページが見つかりませんでした。',
   book: bookTranslations,
   procure: procureTranslation,
   lend: lendTranslations,

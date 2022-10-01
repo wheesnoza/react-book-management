@@ -7,6 +7,7 @@ import { PrivateRoutes, Role } from '@/models';
 
 export const BookDetail = () => {
   const { bookId } = useParams<{ bookId: string }>();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const { book, lends } = useBook(bookId!);
   const { t } = useTranslation();
   const navigate = useNavigate();

@@ -7,7 +7,7 @@ import { PrivateRoutes, Role } from '@/models';
 
 export const BookDetail = () => {
   const { bookId } = useParams<{ bookId: string }>();
-  const { book, lends } = useBook(bookId ?? '');
+  const { book, lends } = useBook(bookId!);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();

@@ -18,7 +18,12 @@ export interface Book {
 export const bookSchema = yup.object().shape({
   title: yup.string().label(t('book.title')).required().max(80),
   description: yup.string().label(t('book.description')).required().max(250),
-  stock: yup.number().label(t('book.stock')).required().min(1),
+  stock: yup
+    .number()
+    .transform((value) => (Number.isNaN(value) ? undefined : value))
+    .label(t('book.stock'))
+    .required()
+    .min(1),
   status: yup
     .string()
     .oneOf(Object.values(BookStatus))

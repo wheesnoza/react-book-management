@@ -43,7 +43,7 @@ function App() {
                       <Route path={PublicRoutes.LOGIN} element={<Login />} />
                     </Route>
                     <Route element={<AuthGuard />}>
-                      <Route path={PrivateRoutes.HOME} element={<Home />} />
+                      <Route index element={<Home />} />
                       <Route
                         path={PrivateRoutes.BOOK_PROCURE_PETITION}
                         element={<ProcurePetition />}

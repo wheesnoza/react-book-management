@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes } from '@/models';
 
 type Props = {
-  resetErrorBoundary: (...args: Array<unknown>) => void;
+  resetErrorBoundary?: (...args: Array<unknown>) => void;
 };
 
 export const NotFound = ({ resetErrorBoundary }: Props) => {
@@ -29,7 +29,7 @@ export const NotFound = ({ resetErrorBoundary }: Props) => {
       <Button
         variant="contained"
         onClick={() => {
-          resetErrorBoundary();
+          resetErrorBoundary?.();
           navigate(PrivateRoutes.HOME);
         }}
       >

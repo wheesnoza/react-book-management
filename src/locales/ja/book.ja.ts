@@ -12,4 +12,7 @@ export const bookTranslations = {
   page: {
     more: 'さらに表示する',
   },
+  lend: {
+    petition: 'この本を借りる',
+  },
 };

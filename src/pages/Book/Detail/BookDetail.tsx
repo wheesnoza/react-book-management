@@ -16,11 +16,10 @@ export const BookDetail = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={4}>
-        <BookCard book={book} />
-      </Grid>
-      <Grid item xs={12} md={8}>
+        <BookCard book={book} sx={{ marginBottom: 5 }} />
         {[Role.ADMIN, Role.CORPORATE].includes(user.role) && (
           <Button
+            sx={{ marginRight: 2 }}
             variant="contained"
             onClick={() =>
               navigate(
@@ -31,6 +30,20 @@ export const BookDetail = () => {
             {t('book.edit')}
           </Button>
         )}
+        <Button
+          variant="contained"
+          onClick={() =>
+            navigate(
+              generatePath(PrivateRoutes.BOOK_LEND_PETITION, {
+                bookId: book.id,
+              })
+            )
+          }
+        >
+          {t('book.lend.petition')}
+        </Button>
+      </Grid>
+      <Grid item xs={12} md={8}>
         <Typography variant="h3">{book.title}</Typography>
         <Typography variant="subtitle1">{book.description}</Typography>
         <BookLendsCalendar lends={lends} />

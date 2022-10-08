@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { rest } from 'msw';
-import applications from './data/applications.data.json';
+import { applications } from './data/applications.data';
 import { book, books } from './data/book.data';
 
 export const handlers = [
@@ -24,13 +24,18 @@ export const handlers = [
   rest.put('/api/books/:bookId', (req, res, ctx) => {
     return res(ctx.delay(2000), ctx.status(200), ctx.json(req.body));
   }),
-  rest.get('/api/applications', (req, res, ctx) => {
-    return res(ctx.delay(2000), ctx.status(200), ctx.json(applications));
-  }),
   rest.post('/api/procures', (req, res, ctx) => {
     return res(ctx.delay(2000), ctx.status(201), ctx.json(req.body));
   }),
   rest.post('/api/lends', (req, res, ctx) => {
     return res(ctx.delay(2000), ctx.status(201), ctx.json(req.body));
+  }),
+  rest.get('/api/applications', (req, res, ctx) => {
+    const page = parseInt(req.url.searchParams.get('page') ?? '1', 10);
+    const limit = parseInt(req.url.searchParams.get('limit') ?? '10', 10);
+    const to = page * limit;
+    const from = to - limit;
+    const data = applications.slice(from, to);
+    return res(ctx.delay(2000), ctx.status(200), ctx.json(data));
   }),
 ];
